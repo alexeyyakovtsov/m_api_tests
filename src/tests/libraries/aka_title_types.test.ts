@@ -4,12 +4,12 @@ import * as token from '../../helpers/token'
 
 dotenv.config()
 
-describe('Users - Me', () => {
-
+describe('Lib - Aka-title-types', () => {
+    
     it('should have content-type property', async () => {
         const tok = await token.get_token()
         await axios.default
-            .get(process.env.URL + '/api/user/me', {
+            .get(process.env.URL + '/api/lib/aka-title-types', {
                 headers: {
                     'Authorization': `Bearer ${tok}`
                 }
@@ -25,7 +25,7 @@ describe('Users - Me', () => {
     it('should get status 200', async () => {
         const tok = await token.get_token()
         await axios.default
-            .get(process.env.URL + '/api/user/me', {
+            .get(process.env.URL + '/api/lib/aka-title-types', {
                 headers: {
                     'Authorization': `Bearer ${tok}`
                 }
@@ -38,28 +38,9 @@ describe('Users - Me', () => {
             })
     });
 
-    it('should valid user data', async () => {
-        const tok = await token.get_token()
-        await axios.default
-            .get(process.env.URL + '/api/user/me', {
-                headers: {
-                    'Authorization': `Bearer ${tok}`
-                }
-            })
-            .then(function (response) {
-                expect(response.data["email"]).toEqual(process.env.EMAIL)
-                expect(response.data["username"]).toEqual(process.env.EMAIL)
-                expect(response.data["firstName"]).toEqual("Alexey")
-                expect(response.data["lastName"]).toEqual("Yakovtsov")
-            })
-            .catch((error) => {
-                console.log(error)
-            })
-    });
-
     it('should get status 401', async () => {
         await axios.default
-            .get(process.env.URL + '/api/user/me')
+            .get(process.env.URL + '/api/lib/aka-title-types')
             .catch(function (error) {
                 expect(error.request.status).toBe(401)
             })
