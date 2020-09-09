@@ -1,4 +1,5 @@
 module.exports = {
+    testTimeout: 30000,
     "collectCoverageFrom": [
         "src/**/*.{js,ts}",
         "!src/**/*.d.ts"
